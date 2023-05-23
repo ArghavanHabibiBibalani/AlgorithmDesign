@@ -1,4 +1,4 @@
-﻿namespace AlgorithmsDesign
+﻿namespace AlgorithmsLib
 {
     public class SearchAlgorithms
     {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace AlgorithmsDesign
+namespace AlgorithmsLib
 {
     public class GenerationAlgorithms
     {

@@ -1,1 +1,1 @@
-# DesignAlgorithm
+# AlgorithmDesign

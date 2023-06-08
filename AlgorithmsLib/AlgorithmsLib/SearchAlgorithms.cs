@@ -2,7 +2,7 @@
 {
     public class SearchAlgorithms
     {
-        public static int BinarySearch(int[] array, double value) { return BinarySearch(array, value, 0, array.Length - 1); }
+        public static int BinarySearch(int[] array, double value) { return BinarySearch(array, value, 0, array.Length - 1); } // Θ(nlog(n))
         public static int BinarySearch(int[] array, double value, int low, int high)
         {
             int midPoint = (low + high) / 2;

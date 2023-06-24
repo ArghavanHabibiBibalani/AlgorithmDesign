@@ -5,7 +5,7 @@ namespace AlgorithmsLib
     public class Utility
     {
         public static void Swap(double[] array, int first, int second) { (array[first], array[second]) = (array[second], array[first]); }
-        public static string ArrayToString(double[] array)
+        public static string ArrayToString<T>(T[] array)
         {
             var output = "{ ";
             for (int i = 0; i < array.Length; i++)

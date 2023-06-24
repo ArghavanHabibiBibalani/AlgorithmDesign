@@ -2,12 +2,8 @@
 
 public class Program
 {
-    static void Main(string[] args, SortingAlgorithms sortingAlgorithms)
+    static void Main(string[] args)
     {
-        double[] a = new double[] { 27, 10, 12, 20, 25, 13, 15, 22 };
-        //SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
-        double[] i  = SortingAlgorithms.MergeSort(a);
-        Console.WriteLine(i);
-
+        Console.WriteLine(Utility.ArrayToString(GenerationAlgorithms.BinomialExpansion(12)));
     }
 }

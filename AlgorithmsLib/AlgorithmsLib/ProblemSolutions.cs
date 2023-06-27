@@ -19,5 +19,6 @@
             Console.WriteLine($"{step++}.Move disk {diskCount} from rod {startingRod} to rod {targetRod}.");
             TowerOfHanoi(diskCount - 1, auxiliaryRod, targetRod, startingRod, ref step);
         }
+        
     }
 }

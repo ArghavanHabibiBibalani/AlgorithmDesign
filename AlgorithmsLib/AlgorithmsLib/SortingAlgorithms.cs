@@ -48,7 +48,6 @@ namespace AlgorithmsLib
             }
             return left;
         }
-
         public static double[] MergeSort(double[] unsorted_Array)
         {
             if(unsorted_Array.Length ==0 || unsorted_Array.Length == 1)
@@ -76,7 +75,6 @@ namespace AlgorithmsLib
                 return Merge(left_Array, right_Array);
             }
         }
-
         private static double[] Merge(double[] left_Array, double[] right_Array)
         {
             double[] merged = new double[left_Array.Length + right_Array.Length];

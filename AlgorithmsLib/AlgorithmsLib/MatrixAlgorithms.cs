@@ -3,7 +3,7 @@
 namespace AlgorithmsLib
 {
     public class MatrixAlgorithms
-    {
+    { 
         public static double[,] MultiplyMatrices(double[,] first, double[,] second)
         {
             if (first.GetLength(1) == second.GetLength(0))
@@ -80,5 +80,6 @@ namespace AlgorithmsLib
             // Merge the matrices and return the result
             return Utility.MergeMatrices(R11, R12, R21, R22);
         }
+
     }
 }

@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using AlgorithmsLib;
@@ -10,8 +11,10 @@ namespace AlgorithmsLib
 {
     public class GraphAlgorithms
     {
-        public static int[] _number;
-        public static int[] _rank;
+        public static int[] _number;//FOR Kruskal ALGO
+        public static int[] _rank;//FOR Kruskal ALGO
+        public const int _maxNumber = 100000;// FOR FloydWarshall ALGO
+
         public static int Kruskal(int NumberOfVertices, int NumberOfEdges, int[,] edges  )
         {
             Tuple<int, int, int>[] _saveEdges = new Tuple<int, int, int>[NumberOfEdges];
@@ -83,6 +86,37 @@ namespace AlgorithmsLib
             int _temp = Find(_number[x]);
             _number[x] = _temp;
             return _temp;
+        }
+        public static void FloydWarshall(int[,] graph, int numberOfEdges)
+        {
+            int[,] _matrix = new int[numberOfEdges, numberOfEdges];
+
+            for (int i = 0; i < numberOfEdges; i++)
+            {
+                for (int j = 0; j < numberOfEdges; j++)
+                {
+                    _matrix[i, j] = graph[i, j];
+                }
+            }
+
+            for (int k = 0; k < numberOfEdges; k++)
+            {
+                for (int j = 0; j < numberOfEdges; j++)
+                {
+                    for (int i = 0; i < numberOfEdges; i++)
+                    {
+                        if (_matrix[i, k] + _matrix[k, j] < _matrix[i, j])
+                        {
+                            _matrix[i, j] = _matrix[i, k] + _matrix[k, j];
+                        }
+                        else
+                        {
+                            _matrix[i, j] = _matrix[i, j];
+                        }
+                    }
+                }
+            }
+            Utility.PrintMAtrixForFloydWarshall(_matrix, numberOfEdges);
         }
     }
 }

@@ -178,5 +178,22 @@ namespace AlgorithmsLib
             }
             return output;
         }
+        public static void PrintMAtrixForFloydWarshall(int[, ] matrix, int numberOfEdges)
+        {
+            for(int i = 0; i < numberOfEdges; i++)
+            {
+                for(int j = 0; j < numberOfEdges; j++)
+                {
+                    if (matrix[i, j] == GraphAlgorithms._maxNumber)
+                    {
+                        Console.Write("INF" + " ");
+                    }
+                    else 
+                    {
+                        Console.Write(matrix[i, j] + "   ");
+                    }
+                } Console.WriteLine();
+            }
+        }
     }
 }

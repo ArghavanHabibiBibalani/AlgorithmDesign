@@ -118,5 +118,51 @@ namespace AlgorithmsLib
             }
             Utility.PrintMAtrixForFloydWarshall(_matrix, numberOfEdges);
         }
+
+        public static int[] Dijkstra(int[,] adjacencyMatrix, int source)
+        {
+            if (adjacencyMatrix.GetLength(0) != adjacencyMatrix.GetLength(1))
+            {
+                throw new ArgumentException("The given matrix is not valid.");
+            }
+            if (source < 0 || adjacencyMatrix.GetLength(0) < source)
+            {
+                throw new ArgumentException("The given source index is out of range.");
+            }
+
+            var graphSize = adjacencyMatrix.GetLength(0);
+            var distance = new int[graphSize];
+            var selectedTreeSet = new bool[graphSize];
+
+            Array.Fill(distance, int.MaxValue); // Sets all initial values in distance array to "infinity"
+            distance[source] = 0;
+
+            for (int i = 0; i < graphSize - 1; i++)
+            {
+                int min = int.MaxValue;
+                int currentlySelected = 0;
+
+                for (int v = 0; v < graphSize; v++)
+                {
+                    if (selectedTreeSet[v] == false && distance[v] < min)
+                    {
+                        min = distance[v];
+                        currentlySelected = v;
+                    }
+                }
+
+                selectedTreeSet[currentlySelected] = true;
+
+                for (int j = 0; j < graphSize; j++)
+                {
+                    if (adjacencyMatrix[currentlySelected, j] != 0 && selectedTreeSet[j] == false
+                        && distance[currentlySelected] != int.MaxValue && distance[j] > distance[currentlySelected] + adjacencyMatrix[currentlySelected, j] )
+                    {
+                        distance[j] = distance[currentlySelected] + adjacencyMatrix[currentlySelected, j];
+                    }
+                }
+            }
+            return distance;
+        }
     }
 }

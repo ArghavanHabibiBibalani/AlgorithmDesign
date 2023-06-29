@@ -80,6 +80,28 @@ namespace AlgorithmsLib
             // Merge the matrices and return the result
             return Utility.MergeMatrices(R11, R12, R21, R22);
         }
+        public static int matrixChainMultiplication(int[] dimention)
+        {
+            int[, ] _valuesOfMatrixMultiplication = new int[dimention.Length + 1, dimention.Length + 1];
+
+            for(int s = 2; s <= dimention.Length; s++)
+            {
+                for(int row = 1; row <= dimention.Length - s + 1; row++)
+                {
+                    int col = row + s - 1;
+                    _valuesOfMatrixMultiplication[row, col] = Int32.MaxValue;
+                    for(int mid = row; col < dimention.Length && mid <= col - 1; mid++)
+                    {
+                        int result = _valuesOfMatrixMultiplication[row, mid] + _valuesOfMatrixMultiplication[mid + 1, col] + dimention[row - 1] * dimention[col] * dimention[mid];
+                        if(result < _valuesOfMatrixMultiplication[row, col])
+                        {
+                            _valuesOfMatrixMultiplication[row, col] = result;
+                        }
+                    }
+                }
+            }
+            return _valuesOfMatrixMultiplication[1, dimention.Length - 1];
+        }
 
     }
 }

@@ -19,6 +19,20 @@
             Console.WriteLine($"{step++}.Move disk {diskCount} from rod {startingRod} to rod {targetRod}.");
             TowerOfHanoi(diskCount - 1, auxiliaryRod, targetRod, startingRod, ref step);
         }
-        
+        public static int KnapSack(int[] weight, int[] profit, int capacity, int profitMax)
+        {
+            if (profitMax == 0 || capacity == 0)
+            {
+                return 0;
+            }
+            else if (weight[profitMax - 1] > capacity)
+            {
+                return KnapSack(weight, profit, capacity, profitMax - 1);
+            }
+            else
+            {
+                return Math.Max(profit[profitMax - 1] + KnapSack(weight, profit, capacity - weight[profitMax - 1], profitMax - 1), KnapSack(weight, profit, capacity, profitMax - 1));
+            }
+        }
     }
 }
